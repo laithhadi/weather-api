@@ -12,7 +12,7 @@ function App() {
     e.preventDefault();
     try {
       const apiClient = new FiveDayAPIClient();
-      const data = await apiClient.fetchFiveDayForecastByCity(city);
+      const data = await apiClient.fetch5DayForecastByCityIn24HrInterval(city);
       setForecast(data.list);
       setError("");
     } catch (error) {

@@ -9,7 +9,7 @@ class FiveDayAPIClient extends AbstractAPIClient {
         this.geocodingAPI = new GeocodingAPIClient();
     }
 
-    async fetchFiveDayForecastByCity(cityName) {
+    async fetch5DayForecastByCityIn24HrInterval(cityName) {
         try {
             const coords = await this.geocodingAPI.fetchCoordinatesForCity(cityName);
             const params = {
@@ -17,15 +17,16 @@ class FiveDayAPIClient extends AbstractAPIClient {
                 lon: coords.longitude,
                 appid: this.apiKey,
                 units: "metric",
-                cnt: 5, // retrieve the next 5 days with 24-hour intervals
-                start: Math.floor(Date.now() / 1000), // start from current time
-                interval: 24 // set 12-hour intervals
             };
             // TODO: fix this
             // const response = await this.fetchData(this.baseURL, params);
             const url = `${this.baseURL}?${new URLSearchParams(params)}`;
             const data = await this.fetchData(url);
-            return data;
+            // Since we can only get 3 hour intervals for 5 days, we are forced to filter the response
+            const filteredData = data.list.filter((item, index) => {
+                return index % 8 === 0; // get every 8th item (24-hour interval because 24/3=8)
+            });
+            return { ...data, list: filteredData };
         } catch (error) {
             console.error(error);
             return null;
