@@ -8,15 +8,44 @@ class GeocodingAPIClient extends AbstractAPIClient {
     }
 
     async fetchCoordinatesForCity(cityName) {
-        const url = `${this.baseURL}?q=${encodeURIComponent(cityName)}&limit=1&appid=${this.apiKey}`;
-        const data = await this.fetchData(url);
-        if (data && data.length > 0) {
+        try {
+            const params =
+            {
+                q: cityName,
+                limit: 1,
+                appid: this.apiKey
+            };
+            const url = `${this.baseURL}?${new URLSearchParams(params)}`;
+            const data = await this.fetchData(url);
             return {
                 latitude: data[0].lat,
                 longitude: data[0].lon
             };
+        } catch (error) {
+            console.log(error);
+            return null;
         }
-        return null;
+    }
+
+    async fetchCityNameByCoordinates(lat, lon) {
+        try {
+            const params =
+            {
+                lat: lat,
+                lon: lon,
+                limit: 1,
+                appid: this.apiKey
+            };
+            const url = `${this.baseURL}?${new URLSearchParams(params)}`;
+            const data = await this.fetchData(url);
+            return {
+                name: data[0].name,
+                country: data[0].country
+            };
+        } catch (error) {
+            console.log(error);
+            return null;
+        }
     }
 }
 

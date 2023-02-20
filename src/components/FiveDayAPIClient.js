@@ -16,14 +16,16 @@ class FiveDayAPIClient extends AbstractAPIClient {
                 lat: coords.latitude,
                 lon: coords.longitude,
                 appid: this.apiKey,
-                units: "metric"
+                units: "metric",
+                cnt: 5, // retrieve the next 5 days with 24-hour intervals
+                start: Math.floor(Date.now() / 1000), // start from current time
+                interval: 24 // set 12-hour intervals
             };
             // TODO: fix this
             // const response = await this.fetchData(this.baseURL, params);
             const url = `${this.baseURL}?${new URLSearchParams(params)}`;
-            const response = await this.fetchData(url);
-            console.log(response);
-            return response;
+            const data = await this.fetchData(url);
+            return data;
         } catch (error) {
             console.error(error);
             return null;

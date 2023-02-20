@@ -32,8 +32,16 @@ function App() {
                   <strong>Date: {item.dt_txt}</strong>
                 </Card.Header>
                 <Card.Body>
-                  <Card.Text>Temperature: {item.main.temp}°C</Card.Text>
+                  <Card.Text>
+                    <img
+                      src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`}
+                      alt={item.weather[0].description}
+                    />
+                  </Card.Text>
                   <Card.Text>Description: {item.weather[0].description}</Card.Text>
+                  <Card.Text>Max Temp: {item.main.temp_max}°C</Card.Text>
+                  <Card.Text>Min Temp: {item.main.temp_min}°C</Card.Text>
+                  <Card.Text>Wind speed: {item.wind.speed}</Card.Text>
                 </Card.Body>
               </Card>
             </Col>
