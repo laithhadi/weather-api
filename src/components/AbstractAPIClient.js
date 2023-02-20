@@ -1,6 +1,9 @@
-class AbstrctAPIClient {
+import axios from "axios";
+
+class AbstractAPIClient {
     constructor() {
         this.baseURL = "";
+        this.apiKey = "";
     }
 
     async setBaseURL(url) {
@@ -25,15 +28,15 @@ class AbstrctAPIClient {
             const res = await this.responseStatusCheck(req);
             return res;
         } catch (error) {
-            //TODO: Error handling
+            // TODO: Error handling
             return "ERROR";
         }
-    };
+    }
 
-    async fetchData() {
-        const response = await this.getRequest(this.baseURL);
+    async fetchData(url, params = {}) {
+        const response = await this.getRequest(url, params);
         return response.data;
     };
 }
 
-export default AbstrctAPIClient;
+export default AbstractAPIClient;
