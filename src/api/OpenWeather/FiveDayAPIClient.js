@@ -1,4 +1,4 @@
-import AbstractAPIClient from "./AbstractAPIClient";
+import AbstractAPIClient from "../AbstractAPIClient";
 import GeocodingAPIClient from "./GeocodingAPIClient";
 
 class FiveDayAPIClient extends AbstractAPIClient {

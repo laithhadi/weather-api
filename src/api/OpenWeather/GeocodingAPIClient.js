@@ -1,4 +1,4 @@
-import AbstractAPIClient from "./AbstractAPIClient";
+import AbstractAPIClient from "../AbstractAPIClient";
 
 class GeocodingAPIClient extends AbstractAPIClient {
     constructor() {

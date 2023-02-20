@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Card, Alert } from "react-bootstrap";
-import FiveDayAPIClient from "./components/FiveDayAPIClient";
+import FiveDayAPIClient from "./api/OpenWeather/FiveDayAPIClient";
 import "./App.css";
 
 function App() {
