@@ -1,3 +1,14 @@
+.bg-color {
+  background-color: #c1dbe3;
+}
+
+.left-panel, 
+.right-panel {
+  background-color: #ffffff;
+  height: 80vh;
+  width: auto;
+}
+
 .card {
   border: 1px solid #ccc;
   border-radius: 5px;
