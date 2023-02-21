@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Card, Alert } from "react-bootstrap";
 import FiveDayAPIClient from "./api/OpenWeather/FiveDayAPIClient";
+import MapsAPIClient from "./api/GoogleMaps/MapsAPIClient";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [city, setCity] = useState("");
   const [forecast, setForecast] = useState([]);
+  const [map, setMap] = useState([]);
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const apiClient = new FiveDayAPIClient();
+      const mapsAPIClient = new MapsAPIClient();
       const data = await apiClient.fetch5DayForecastByCityIn24HrInterval(city);
+      const mapData = await mapsAPIClient.fetchMapForCity(city);
+
       setForecast(data.list);
+      setMap(mapData);
       setError("");
     } catch (error) {
       setForecast([]);
@@ -26,7 +33,7 @@ function App() {
       return (
         <Row className="justify-content-md-center mt-5">
           {forecast.map((item, index) => (
-            <Col md={3} key={index} className="mb-4">
+            <Col lg={2} key={index} className="mb-4">
               <Card>
                 <Card.Header>
                   <strong>Date: {item.dt_txt}</strong>
@@ -51,6 +58,14 @@ function App() {
     } else {
       return null;
     }
+  };
+
+  const renderGoogleMap = () => {
+    return (
+      <div className="google-map">
+        <iframe title="google map" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC7IXnHpREreLX34gD-5CbPqv4C5GQcf54&q=London&zoom=6&maptype=roadmap" width="300" height="300"></iframe>
+      </div>
+    )
   };
 
   const renderError = () => {
@@ -80,11 +95,12 @@ function App() {
               Submit
             </Button>
           </Form>
-          {renderError()}
-          {renderForecast()}
         </Col>
       </Row>
-    </Container>
+      {renderError()}
+      {renderForecast()}
+      {renderGoogleMap()}
+    </Container >
   );
 }
 
