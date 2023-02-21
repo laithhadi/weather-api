@@ -4,13 +4,16 @@ import FiveDayAPIClient from "./api/OpenWeather/FiveDayAPIClient";
 import MapsAPIClient from "./api/GoogleMaps/MapsAPIClient";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import View from "./View";
+import ForecastCards from "./components/ForecastCards";
+
 
 function App() {
   const [city, setCity] = useState("");
   const [forecast, setForecast] = useState([]);
   const [map, setMap] = useState([]);
   const [error, setError] = useState("");
-  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,37 +32,6 @@ function App() {
     }
   };
 
-  const renderForecast = () => {
-    if (forecast.length > 0) {
-      return (
-        <Row className="justify-content-md-center mt-5">
-          {forecast.map((item, index) => (
-            <Col lg={2} key={index} className="mb-4">
-              <Card>
-                <Card.Header>
-                  <strong>Date: {item.dt_txt}</strong>
-                </Card.Header>
-                <Card.Body>
-                  <Card.Text>
-                    <img
-                      src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`}
-                      alt={item.weather[0].description}
-                    />
-                  </Card.Text>
-                  <Card.Text>Description: {item.weather[0].description}</Card.Text>
-                  <Card.Text>Max Temp: {item.main.temp_max}°C</Card.Text>
-                  <Card.Text>Min Temp: {item.main.temp_min}°C</Card.Text>
-                  <Card.Text>Wind speed: {item.wind.speed}</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      );
-    } else {
-      return null;
-    }
-  };
 
   const renderGoogleMap = () => {
     return (
@@ -78,30 +50,33 @@ function App() {
   };
 
   return (
-    <Container className="mt-5">
-      <Row className="justify-content-md-center">
-        <Col md={6}>
-          <h1 className="mb-4">Five Day Weather Forecast</h1>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group>
-              <Form.Label>City</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter city name"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-              />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-      {renderError()}
-      {renderForecast()}
-      {renderGoogleMap()}
-    </Container >
+    <>
+      <Container className="mt-5">
+        <Row className="justify-content-md-center">
+          <Col md={6}>
+            <h1 className="mb-4">Five Day Weather Forecast</h1>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label>City</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter city name"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+        {renderError()}
+        {renderGoogleMap()}
+        <View forecast={forecast} />
+      </Container>
+
+    </>
   );
 }
 
