@@ -10,6 +10,7 @@ Tasks
 8. Days
 9. LeftSidePanel
 10. RightSidePanel
+11. Error handling
 -------------------
 APIs
 --------------------

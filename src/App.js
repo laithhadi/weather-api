@@ -1,44 +1,30 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button, Card, Alert } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import FiveDayAPIClient from "./api/OpenWeather/FiveDayAPIClient";
-import MapsAPIClient from "./api/GoogleMaps/MapsAPIClient";
+import GoogleMap from "./components/GoogleMap";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import View from "./View";
-import ForecastCards from "./components/ForecastCards";
-
 
 function App() {
   const [city, setCity] = useState("");
   const [forecast, setForecast] = useState([]);
-  const [map, setMap] = useState([]);
   const [error, setError] = useState("");
-
+  const [cityInput, setCityInput] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const apiClient = new FiveDayAPIClient();
-      const mapsAPIClient = new MapsAPIClient();
-      const data = await apiClient.fetch5DayForecastByCityIn24HrInterval(city);
-      const mapData = await mapsAPIClient.fetchMapForCity(city);
+      const data = await apiClient.fetch5DayForecastByCityIn24HrInterval(cityInput);
 
       setForecast(data.list);
-      setMap(mapData);
+      setCity(cityInput);
       setError("");
     } catch (error) {
       setForecast([]);
       setError("An error occurred while fetching data. Please try again later.");
     }
-  };
-
-
-  const renderGoogleMap = () => {
-    return (
-      <div className="google-map">
-        <iframe title="google map" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC7IXnHpREreLX34gD-5CbPqv4C5GQcf54&q=London&zoom=6&maptype=roadmap" width="300" height="300"></iframe>
-      </div>
-    )
   };
 
   const renderError = () => {
@@ -61,8 +47,8 @@ function App() {
                 <Form.Control
                   type="text"
                   placeholder="Enter city name"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
+                  value={cityInput}
+                  onChange={(e) => setCityInput(e.target.value)}
                 />
               </Form.Group>
               <Button variant="primary" type="submit">
@@ -72,8 +58,11 @@ function App() {
           </Col>
         </Row>
         {renderError()}
-        {renderGoogleMap()}
         <View forecast={forecast} />
+        {city !== ""
+          ? <GoogleMap city={city} />
+          : "should display loading here or error msg"
+        }
       </Container>
 
     </>
