@@ -5,7 +5,7 @@ Tasks
 3. Location 
 4. WeatherInfo
 5. Logo -> Ahmed
-6. GoogleMap
+6. GoogleMap -> Laith
 7. ForecastCard(s) -> Arune
 8. Days
 9. LeftSidePanel
@@ -16,3 +16,4 @@ APIs
 1. OpenWeather
 2. Embed google maps
 3. more?
+4. something
