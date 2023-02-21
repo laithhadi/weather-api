@@ -1,4 +1,4 @@
-import MapsAPIClient from "../api/GoogleMaps/MapsAPIClient";
+import MapsAPIClient from "../../api/GoogleMaps/MapsAPIClient";
 
 function GoogleMap(props) {
     const mapsAPIClient = new MapsAPIClient();

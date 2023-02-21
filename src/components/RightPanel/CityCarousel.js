@@ -1,5 +1,5 @@
 import { Carousel } from "react-bootstrap";
-import UnsplashAPIClient from "../api/Unsplash/UnsplashAPIClient";
+import UnsplashAPIClient from "../../api/Unsplash/UnsplashAPIClient";
 import { useState, useEffect } from "react";
 
 function CityCarousel() {

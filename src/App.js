@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
-import FiveDayAPIClient from "./api/OpenWeather/FiveDayAPIClient";
-import GoogleMap from "./components/GoogleMap";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import View from "./View";
+import FiveDayAPIClient from "./api/OpenWeather/FiveDayAPIClient";
+import { useState } from "react";
+import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
+import GoogleMap from "./components/LeftPanel/GoogleMap";
+import View from "./components/RightPanel/Forecast/ForecastCardsView";
 
 function App() {
   const [city, setCity] = useState("");

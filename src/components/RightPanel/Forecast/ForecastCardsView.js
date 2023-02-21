@@ -1,4 +1,4 @@
-import ForecastCards from "./components/ForecastCards"
+import ForecastCards from "./ForecastCards"
 
 function View(props) {
     return (

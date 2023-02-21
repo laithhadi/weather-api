@@ -1,15 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Col, Row } from "react-bootstrap";
 
-
-
 function ForecastCard(props) {
     const item = props.item;
 
-    // if (props.forecast.length > 0) {
     return (
         <Row className="justify-content-md-center mt-5">
-            {/* {props.forecast.map((item, index) => ( */}
             <Col lg={12} className="mb-4">
                 <Card>
                     <Card.Header>
@@ -29,13 +25,8 @@ function ForecastCard(props) {
                     </Card.Body>
                 </Card>
             </Col>
-            {/* )
-                )} */}
         </Row>
     );
-    // } else {
-    //     return null;
-    // }
 };
 
 export default ForecastCard;
