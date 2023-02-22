@@ -1,47 +1,90 @@
-import "../../css/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { useState } from "react";
+import { Container, Row, Col, Form, Button, Spinner, Alert } from "react-bootstrap";
 import FiveDayAPIClient from "../../api/OpenWeather/FiveDayAPIClient";
 import GoogleMap from "./GoogleMap";
 
 function LeftSidePanelView(props) {
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
+        setError(null);
+
         try {
             const apiClient = new FiveDayAPIClient();
-            const data = await apiClient.fetch5DayForecastByCityIn24HrInterval(props.cityInput);
-            props.setForecast(data.list);
-            props.setCity(props.cityInput);
+            const data = await apiClient.fetch5DayForecastByCityIn24HrInterval(
+                props.cityInput
+            );
+            if (data) {
+                props.setForecast(data.list);
+                props.setCity(props.cityInput);
+            } else {
+                setError("Failed to retrieve weather data for the entered city. Please try again.");
+            }
         } catch (error) {
-            props.setForecast([]);
+            setError("Failed to retrieve weather data for the entered city. Please try again.");
         }
+
+        setIsLoading(false);
     };
 
+    const isSubmitButtonDisabled = props.cityInput === "";
+
     return (
-        <Container className="left-panel mt-5">
-            <Row className="justify-content-md-center">
-                <Col md={6}>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group>
+        <Container className="justify-content-md-center left-panel rounded-4">
+            <Row>
+                <Form onSubmit={handleSubmit}>
+                    <Row className="mt-5">
+                        <Col lg={3}>
                             <Form.Label>City</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter city name"
-                                value={props.cityInput}
-                                onChange={(e) => props.setCityInput(e.target.value)}
-                            />
-                        </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
+                        </Col>
+                        <Col lg={9}>
+                            <Form.Group>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter city name"
+                                    value={props.cityInput}
+                                    onChange={(e) => props.setCityInput(e.target.value)}
+                                />
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    <Row className="mt-3">
+                        <Button variant="primary" type="submit" disabled={isSubmitButtonDisabled}>
+                            {isLoading ? (
+                                <Spinner
+                                    as="span"
+                                    animation="border"
+                                    size="sm"
+                                    role="status"
+                                    aria-hidden="true"
+                                />
+                            ) : (
+                                "Submit"
+                            )}
                         </Button>
-                    </Form>
+                    </Row>
+                    {error && (
+                        <Row className="mt-3">
+                            <Alert variant="danger">{error}</Alert>
+                        </Row>
+                    )}
+                </Form>
+            </Row>
+            <Row>
+                <Col lg={12} className="text-center text-lg-start mt-3">
+                    {props.city !== "" ? (
+                        <GoogleMap city={props.city} />
+                    ) : isLoading ? (
+                        <Spinner animation="border" />
+                    ) : (
+                        <p>Choose a city first to see the map!</p>
+                    )}
                 </Col>
             </Row>
-            {props.city !== "" ? (
-                <GoogleMap city={props.city} />
-            ) : (
-                "should display loading here or error msg"
-            )}
         </Container>
     );
 }

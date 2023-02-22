@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import LeftSidePanel from "./components/LeftPanel/LeftSidePanelView";
 import RightSidePanel from "./components/RightPanel/RightSidePanelView";
+import Logo from "./components/Logo";
 
 function App() {
   useEffect(() => {
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <Container className="mt-5">
+      <Logo />
       <Row>
         <Col md={4}>
           <LeftSidePanel
@@ -30,7 +32,13 @@ function App() {
           />
         </Col>
         <Col md={8}>
-          <RightSidePanel forecast={forecast} />
+          <RightSidePanel 
+            city={city}
+            setCity={setCity}
+            setForecast={setForecast}
+            setCityInput={setCityInput}
+            forecast={forecast} 
+          />
         </Col>
       </Row>
     </Container>

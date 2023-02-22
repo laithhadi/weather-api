@@ -22,8 +22,7 @@ class GeocodingAPIClient extends AbstractAPIClient {
                 longitude: data[0].lon
             };
         } catch (error) {
-            console.log(error);
-            return null;
+            throw new Error(`Failed to fetch coordinates for ${cityName}. Error: ${error.message}`);
         }
     }
 
@@ -43,8 +42,7 @@ class GeocodingAPIClient extends AbstractAPIClient {
                 country: data[0].country
             };
         } catch (error) {
-            console.log(error);
-            return null;
+            throw new Error(`Failed to fetch city name for coordinates (${lat}, ${lon}). Error: ${error.message}`);
         }
     }
 }

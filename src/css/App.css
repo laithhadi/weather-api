@@ -5,8 +5,9 @@
 .left-panel, 
 .right-panel {
   background-color: #ffffff;
-  height: 80vh;
+  height: 70vh;
   width: auto;
+  margin-top: 2rem;
 }
 
 .card {
@@ -27,5 +28,10 @@
 
 .logo-main {
   width: 20vw;
+  height: auto;
+}
+
+.google-map {
+  max-width: 100%;
   height: auto;
 }

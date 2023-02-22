@@ -18,8 +18,6 @@ class FiveDayAPIClient extends AbstractAPIClient {
                 appid: this.apiKey,
                 units: "metric",
             };
-            // TODO: fix this
-            // const response = await this.fetchData(this.baseURL, params);
             const url = `${this.baseURL}?${new URLSearchParams(params)}`;
             const data = await this.fetchData(url);
             // Since we can only get 3 hour intervals for 5 days, we are forced to filter the response
@@ -28,8 +26,7 @@ class FiveDayAPIClient extends AbstractAPIClient {
             });
             return { ...data, list: filteredData };
         } catch (error) {
-            console.error(error);
-            return null;
+            throw new Error("Failed to fetch 5-day forecast");
         }
     }
 }
