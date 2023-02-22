@@ -1,20 +1,6 @@
 Tasks
 -------------
-1. Carousel -> Sufian
+1. Right side panel css - Arune
+2. Left side css - Sufian
 2. Footer -> Jacob
-3. Location 
-4. WeatherInfo
-5. Logo -> Ahmed
-6. GoogleMap -> Laith
-7. ForecastCard(s) -> Arune
-8. Days
-9. LeftSidePanel
-10. RightSidePanel
-11. Error handling
--------------------
-APIs
---------------------
-1. OpenWeather
-2. Embed google maps
-3. more?
-4. something
+3. Error handling- 

@@ -1,4 +1,4 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+import "../../css/LeftSidePanel.css";
 import { useState } from "react";
 import { Container, Row, Col, Form, Button, Spinner, Alert } from "react-bootstrap";
 import FiveDayAPIClient from "../../api/OpenWeather/FiveDayAPIClient";
