@@ -1,8 +1,8 @@
-import "../App.css";
+import logo from '../img/logo.png';
 
-function Logo()  {
+function Logo() {
     return (
-        <img className="logo-main" alt="Clouds" src={require('../img/logo.png')} />
+        <img className="logo-main" alt="Clouds" src={logo} />
     )
 };
 

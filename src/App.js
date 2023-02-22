@@ -1,71 +1,47 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
-import FiveDayAPIClient from "./api/OpenWeather/FiveDayAPIClient";
-import GoogleMap from "./components/GoogleMap";
-import "./App.css";
+import "./css/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import View from "./View";
+import { Container, Row, Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import LeftSidePanel from "./components/LeftPanel/LeftSidePanelView";
+import RightSidePanel from "./components/RightPanel/RightSidePanelView";
+import Logo from "./components/Logo";
 
 function App() {
+  useEffect(() => {
+    document.body.classList.add("bg-color");
+    return () => {
+      document.body.classList.remove("bg-color");
+    };
+  }, []);
+
   const [city, setCity] = useState("");
-  const [forecast, setForecast] = useState([]);
-  const [error, setError] = useState("");
   const [cityInput, setCityInput] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const apiClient = new FiveDayAPIClient();
-      const data = await apiClient.fetch5DayForecastByCityIn24HrInterval(cityInput);
-
-      setForecast(data.list);
-      setCity(cityInput);
-      setError("");
-    } catch (error) {
-      setForecast([]);
-      setError("An error occurred while fetching data. Please try again later.");
-    }
-  };
-
-  const renderError = () => {
-    if (error !== "") {
-      return <Alert variant="danger">{error}</Alert>;
-    } else {
-      return null;
-    }
-  };
+  const [forecast, setForecast] = useState([]);
 
   return (
-    <>
-      <Container className="mt-5">
-        <Row className="justify-content-md-center">
-          <Col md={6}>
-            <h1 className="mb-4">Five Day Weather Forecast</h1>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group>
-                <Form.Label>City</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter city name"
-                  value={cityInput}
-                  onChange={(e) => setCityInput(e.target.value)}
-                />
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Form>
-          </Col>
-        </Row>
-        {renderError()}
-        <View forecast={forecast} />
-        {city !== ""
-          ? <GoogleMap city={city} />
-          : "should display loading here or error msg"
-        }
-      </Container>
-
-    </>
+    <Container className="mt-5">
+      <Logo />
+      <Row>
+        <Col md={4}>
+          <LeftSidePanel
+            city={city}
+            setCity={setCity}
+            setForecast={setForecast}
+            cityInput={cityInput}
+            setCityInput={setCityInput}
+          />
+        </Col>
+        <Col md={8}>
+          <RightSidePanel 
+            city={city}
+            setCity={setCity}
+            setForecast={setForecast}
+            setCityInput={setCityInput}
+            forecast={forecast} 
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

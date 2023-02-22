@@ -1,3 +1,15 @@
+.bg-color {
+  background-color: #c1dbe3;
+}
+
+.left-panel, 
+.right-panel {
+  background-color: #ffffff;
+  height: 70vh;
+  width: auto;
+  margin-top: 2rem;
+}
+
 .card {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -16,5 +28,10 @@
 
 .logo-main {
   width: 20vw;
+  height: auto;
+}
+
+.google-map {
+  max-width: 100%;
   height: auto;
 }

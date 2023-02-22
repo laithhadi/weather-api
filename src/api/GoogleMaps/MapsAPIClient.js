@@ -4,7 +4,7 @@ class MapsAPIClient extends AbstractAPIClient {
     constructor() {
         super();
         this.baseURL = "https://maps.googleapis.com/maps/api/staticmap";
-        this.apiKey = "needs to be added later";
+        this.apiKey = "ASK LAITH IF YOU NEED TO TEST";
     }
 
     fetchMapForCity(cityName) {
