@@ -34,7 +34,7 @@ function LeftSidePanelView(props) {
     const isSubmitButtonDisabled = props.cityInput === "";
 
     return (
-        <Container className="justify-content-md-center left-panel rounded-4">
+        <Container className="left-panel rounded-4">
             <Row>
                 <Form onSubmit={handleSubmit}>
                     <Row className="mt-5">
@@ -52,20 +52,23 @@ function LeftSidePanelView(props) {
                             </Form.Group>
                         </Col>
                     </Row>
-                    <Row className="mt-3">
-                        <Button className="city-btn" variant="primary" type="submit" disabled={isSubmitButtonDisabled}>
-                            {isLoading ? (
-                                <Spinner
-                                    as="span"
-                                    animation="border"
-                                    size="sm"
-                                    role="status"
-                                    aria-hidden="true"
-                                />
-                            ) : (
-                                "Submit"
-                            )}
-                        </Button>
+                    <Row>
+                        <Col></Col>
+                        <Col>
+                            <Button className="city-btn mt-3" variant="primary" type="submit" disabled={isSubmitButtonDisabled}>
+                                {isLoading ? (
+                                    <Spinner
+                                        as="span"
+                                        animation="border"
+                                        size="sm"
+                                        role="status"
+                                        aria-hidden="true"
+                                    />
+                                ) : (
+                                    "Submit"
+                                )}
+                            </Button></Col>
+                        <Col></Col>
                     </Row>
                     {error && (
                         <Row className="mt-3">

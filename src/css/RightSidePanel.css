@@ -44,16 +44,12 @@
 
 .weather-info {
     font-size: 1.2em;
-    padding-top: 70px;
-    padding-left: 7vw;
 }
 
-.weather-info-row {
-    padding: 10px;
-}
-
-.weather-icon {
-    height: 70px;
+.weather-icon,
+.real-temp {
+    height: 50px;
+    width: auto;
 }
 
 .city-name {
@@ -63,7 +59,7 @@
 }
 
 .weather-description {
-    height: 80px;
+    height: 50px;
 }
 
 .weather-card b {

@@ -1,13 +1,8 @@
 .city-btn {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    margin-left: 7rem;
     width: 10rem;
     border: none;
     border-radius: 15px;
-    max-width: 100%;
-    height: auto;
 }
 .google-map {
     margin-top: 5rem;

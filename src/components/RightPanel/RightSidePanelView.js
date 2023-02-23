@@ -22,13 +22,11 @@ function RightSidePanelView(props) {
     return (
         <Container className="right-panel rounded-4">
             <Row>
-                <Col xs={12} md={6} className="weather-info" >
-                    <WeatherInfo
-                        city={props.city} forecast={props.forecast} />
+                <Col xs={12} md={6} className="weather-info p-5" >
+                    <WeatherInfo city={props.city} forecast={props.forecast} />
                 </Col>
                 <Col xs={12} md={6}>
-                    <CityPhotoCarousel className="carousel"
-                        city={props.city} />
+                    <CityPhotoCarousel className="carousel" city={props.city} />
                 </Col>
             </Row>
             <Row className="justify-content-center">

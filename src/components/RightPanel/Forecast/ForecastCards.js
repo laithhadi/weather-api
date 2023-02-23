@@ -1,8 +1,5 @@
 import SingleForecastCard from "./SingleForecastCard";
-import "../../../css/RightSidePanel.css";
 import { Row } from "react-bootstrap";
-
-
 
 function ForecastCards(props) {
     return (
