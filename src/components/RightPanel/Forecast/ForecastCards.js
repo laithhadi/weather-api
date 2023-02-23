@@ -1,8 +1,12 @@
 import SingleForecastCard from "./SingleForecastCard";
+import "../../../css/RightSidePanel.css";
+import { Row } from "react-bootstrap";
+
+
 
 function ForecastCards(props) {
     return (
-        <div className="row">
+        <Row className="justify-content-md-center">
             {props.forecast.map(function (dailyForecast, index) {
                 if (index < 5) {
                     return (
@@ -14,7 +18,7 @@ function ForecastCards(props) {
                     return null;
                 }
             })}
-        </div>
+        </Row>
     );
 }
 

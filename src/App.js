@@ -23,7 +23,7 @@ function App() {
       <Logo />
       <Row>
         <Col md={4}>
-          <LeftSidePanel
+          <LeftSidePanel className="left-panel"
             city={city}
             setCity={setCity}
             setForecast={setForecast}
@@ -32,12 +32,12 @@ function App() {
           />
         </Col>
         <Col md={8}>
-          <RightSidePanel 
+          <RightSidePanel className="right-panel"
             city={city}
             setCity={setCity}
             setForecast={setForecast}
             setCityInput={setCityInput}
-            forecast={forecast} 
+            forecast={forecast}
           />
         </Col>
       </Row>

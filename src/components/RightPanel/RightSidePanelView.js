@@ -2,9 +2,9 @@ import "../../css/RightSidePanel.css";
 import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import FiveDayAPIClient from "../../api/OpenWeather/FiveDayAPIClient";
-import ForecastCardsView from "../RightPanel/Forecast/ForecastCardsView";
 import WeatherInfo from "./WeatherInfo";
 import CityPhotoCarousel from "./CityCarousel";
+import ForecastCards from "../RightPanel/Forecast/ForecastCards"
 
 function RightSidePanelView(props) {
     useEffect(() => {
@@ -22,15 +22,17 @@ function RightSidePanelView(props) {
     return (
         <Container className="right-panel rounded-4">
             <Row>
-                <Col xs={12} md={6}>
-                    <WeatherInfo city={props.city} forecast={props.forecast} />
+                <Col xs={12} md={6} className="weather-info" >
+                    <WeatherInfo
+                        city={props.city} forecast={props.forecast} />
                 </Col>
                 <Col xs={12} md={6}>
-                    <CityPhotoCarousel city={props.city} />
+                    <CityPhotoCarousel className="carousel"
+                        city={props.city} />
                 </Col>
             </Row>
             <Row>
-                <ForecastCardsView forecast={props.forecast} />
+                <ForecastCards forecast={props.forecast} />
             </Row>
         </Container>
     );
