@@ -6,7 +6,7 @@ import { Row } from "react-bootstrap";
 
 function ForecastCards(props) {
     return (
-        <Row className="justify-content-md-center">
+        <Row className="card-wrapper">
             {props.forecast.map(function (dailyForecast, index) {
                 if (index < 5) {
                     return (

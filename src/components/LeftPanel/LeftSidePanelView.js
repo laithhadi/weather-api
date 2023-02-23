@@ -53,7 +53,7 @@ function LeftSidePanelView(props) {
                         </Col>
                     </Row>
                     <Row className="mt-3">
-                        <Button variant="primary" type="submit" disabled={isSubmitButtonDisabled}>
+                        <Button className="city-btn" variant="primary" type="submit" disabled={isSubmitButtonDisabled}>
                             {isLoading ? (
                                 <Spinner
                                     as="span"
@@ -77,7 +77,7 @@ function LeftSidePanelView(props) {
             <Row>
                 <Col lg={12} className="text-center text-lg-start mt-3">
                     {props.city !== "" ? (
-                        <GoogleMap city={props.city} />
+                        <GoogleMap className="google-map" city={props.city} />
                     ) : isLoading ? (
                         <Spinner animation="border" />
                     ) : (

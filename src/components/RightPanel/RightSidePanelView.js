@@ -31,7 +31,7 @@ function RightSidePanelView(props) {
                         city={props.city} />
                 </Col>
             </Row>
-            <Row>
+            <Row className="justify-content-center">
                 <ForecastCards forecast={props.forecast} />
             </Row>
         </Container>

@@ -15,7 +15,7 @@ function WeatherInfo(props) {
 
     return (
         <>
-            <Row>
+            <Row className="weather-info-row">
                 <Col className="city-name">{capitalize(props.city)}</Col>
             </Row>
             <Row>
