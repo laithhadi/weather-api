@@ -4,7 +4,7 @@ class UnsplashAPIClient extends AbstractAPIClient {
     constructor() {
         super();
         this.baseURL = "https://api.unsplash.com/photos/random";
-        this.apiKey = "4Al3r9u0wv_vipboZ2mqxQ54mDdocUR4wCNRJTKgtjY";
+        this.apiKey = "VnnoJYVG6X2WxCkaVnoEvF9QjYOwC9LyDxkPp8fVZI8";
     }
     async fetchImagesForCity(cityName) {
         try {

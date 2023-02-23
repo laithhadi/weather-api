@@ -1,0 +1,57 @@
+.carousel {
+    height: 200px;
+    width: auto;
+    margin: 20px;
+
+}
+
+.carousel h3 {
+    color: rgb(156, 250, 250);
+    font-family: serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.carousel img {
+    height: 200px;
+    width: auto;
+    border-radius: 10px;
+}
+
+.weather-info {
+    font-size: 1.2em;
+    padding-top: 70px;
+    padding-left: 7vw;
+}
+
+.weather-info row {
+    padding: 10px;
+}
+
+.weather-icon {
+    height: 70px;
+}
+
+.city-name {
+    color: rgb(46, 22, 185);
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.weather-description {
+    height: 80px;
+
+
+}
+
+.center {
+    /* display: flex; */
+    /* justify-content: space-evenly; */
+}
+
+.weather-card b {
+    font-size: 15px;
+}

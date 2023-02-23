@@ -1,15 +1,17 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Col, Row } from "react-bootstrap";
+import "../../../css/RightSidePanel.css";
 
 function ForecastCard(props) {
     const item = props.item;
 
     return (
-        <Row className="justify-content-md-center mt-5">
-            <Col lg={12} className="mb-4">
-                <Card>
+        <Row className="mt-5">
+            <Col lg={12} className="center">
+                <Card className="weather-card">
                     <Card.Header>
-                        <strong>Date: {item.dt_txt}</strong>
+                        <b>Date: <br></br>
+                            {item.dt_txt}</b>
                     </Card.Header>
                     <Card.Body>
                         <Card.Text>
@@ -18,10 +20,10 @@ function ForecastCard(props) {
                                 alt={item.weather[0].description}
                             />
                         </Card.Text>
-                        <Card.Text>Description: {item.weather[0].description}</Card.Text>
-                        <Card.Text>Max Temp: {item.main.temp_max}°C</Card.Text>
-                        <Card.Text>Min Temp: {item.main.temp_min}°C</Card.Text>
-                        <Card.Text>Wind speed: {item.wind.speed}</Card.Text>
+                        <Card.Text className="weather-description">Description: {item.weather[0].description}</Card.Text>
+                        <Card.Text>High: {item.main.temp_max}°C</Card.Text>
+                        <Card.Text>Low: {item.main.temp_min}°C</Card.Text>
+                        <Card.Text>Wind speed: {item.wind.speed} m/s</Card.Text>
                     </Card.Body>
                 </Card>
             </Col>
