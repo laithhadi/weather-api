@@ -9,7 +9,7 @@ class UnsplashAPIClient extends AbstractAPIClient {
     async fetchImagesForCity(cityName) {
         try {
             const params = {
-                count: 1,
+                count: 5,
                 client_id: this.apiKey,
                 query: cityName
             };

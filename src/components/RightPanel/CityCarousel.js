@@ -27,7 +27,7 @@ function CityCarousel(props) {
         <Carousel
             fade
             controls={false}
-            interval={1000}
+            interval={1200}
             activeIndex={activeIndex}
             onSelect={handleSlideEnd}
         >
@@ -36,7 +36,6 @@ function CityCarousel(props) {
                     <img className="d-block w-100" src={image.urls.regular} alt={image.alt_description} />
                     <Carousel.Caption>
                         <h3>{image.alt_description}</h3>
-                        <p>{image.user.name}</p>
                     </Carousel.Caption>
                 </Carousel.Item>
             ))}
