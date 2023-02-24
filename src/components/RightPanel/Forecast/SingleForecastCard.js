@@ -9,8 +9,8 @@ function ForecastCard(props) {
     return (
         <Row className="mt-5">
             <Col lg={12}>
-                <Card className="weather-card">
-                    <Card.Header className="text-center">
+                <Card className="weather-card text-center">
+                    <Card.Header>
                         <b>{format(date, 'iii, do')}<br></br></b>
                         <b>{format(date, 'HH:mm')}<br></br></b>
                     </Card.Header>
