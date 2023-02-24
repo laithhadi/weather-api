@@ -37,7 +37,7 @@ function LeftSidePanelView(props) {
         <Container className="left-panel rounded-4">
             <Row>
                 <Form onSubmit={handleSubmit}>
-                    <Row className="mt-5">
+                    <Row className="mt-5 text-center">
                         <Col lg={3}>
                             <Form.Label>City</Form.Label>
                         </Col>
