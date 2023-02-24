@@ -3,7 +3,7 @@ import AbstractAPIClient from "../AbstractAPIClient";
 class GeocodingAPIClient extends AbstractAPIClient {
     constructor() {
         super();
-        this.baseURL = "http://api.openweathermap.org/geo/1.0/direct";
+        this.baseURL = "https://api.openweathermap.org/geo/1.0/direct";
         this.apiKey = "79635c6cf66b1dc393e8496f6d80e8a3";
     }
 
