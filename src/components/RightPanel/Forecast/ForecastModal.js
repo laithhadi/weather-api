@@ -1,30 +1,57 @@
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import { Modal, Button, Row, Col } from 'react-bootstrap';
+import { capitalize } from "../../_utils";
+import { format } from "date-fns";
 
 function ForecastModal(props) {
-    // console.log(props.modalData);
+    const weatherData = props.item;
+    const date = new Date(weatherData.dt_txt);
+
     return (
-        <Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Modal heading
+        <Modal {...props} size="lg" centered>
+            <Modal.Header>
+                <Modal.Title>
+                    <Row>
+                        <Col>
+                            <b>{format(date, 'HH:mm')} </b>
+                            <b>{format(date, 'iii, do')}</b>
+                        </Col>
+                        <Col>
+                            {capitalize(weatherData.weather[0].description)}
+                        </Col>
+                    </Row>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Centered Modal</h4>
-                <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.
-                </p>
+                <Row>
+                    <Col>
+                        <img
+                            src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
+                            alt={weatherData.weather[0].description}
+                        />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12} md={6}>
+                        <h4>Current Weather</h4>
+                        <p>Temperature: {weatherData.main.temp} &#8451;</p>
+                        <p>Feels like: {weatherData.main.feels_like} &#8451;</p>
+                        <p>Pressure: {weatherData.main.pressure} hPa</p>
+                        <p>Humidity: {weatherData.main.humidity}%</p>
+                        <p>Wind speed: {weatherData.wind.speed} m/s</p>
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <h4>Forecast</h4>
+                        <p>High: {weatherData.main.temp_max} &#8451;</p>
+                        <p>Low: {weatherData.main.temp_min} &#8451;</p>
+                        <p>Cloudiness: {weatherData.clouds.all}%</p>
+                        <p>Probability of Precipitation: {weatherData.pop * 100}%</p>
+                    </Col>
+                </Row>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
+                <button className="btn btn-secondary" onClick={props.onHide}>
+                    Close
+                </button>
             </Modal.Footer>
         </Modal>
     );

@@ -2,12 +2,17 @@
   background-color: #c1dbe3;
 }
 
+.left-panel {
+  height: 100%;
+}
+
+.right-panel {
+  min-height: 78vh;
+}
+
 .left-panel,
 .right-panel {
   background-color: #ffffff;
-  min-height: 78vh;
-  margin-top: 2rem;
-  margin-bottom: 5rem;
   padding-bottom: 2rem;
 }
 
@@ -19,4 +24,28 @@
 .google-map {
   max-width: 100%;
   height: auto;
+}
+
+.footer {
+  background-color: #ffffff;
+  margin-top: 10px;
+}
+
+.footer .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.footer span {
+  color: #fff;
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
 }

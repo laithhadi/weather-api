@@ -6,8 +6,16 @@
 
 .card {
     border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+    transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
 }
 
 .card-wrapper {
@@ -76,4 +84,36 @@
 
 .weather-card b {
     font-size: 15px;
+}
+
+.modal-header {
+    display: inline-block;
+    background-color: #212529;
+    color: #fff;
+    border-bottom: none;
+}
+
+.modal-title {
+    margin-left: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.modal-body {
+    margin-left: 2rem;
+    padding: 1rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.modal-footer {
+    padding: 1rem;
 }

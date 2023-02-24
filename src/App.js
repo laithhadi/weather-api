@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import LeftSidePanel from "./components/LeftPanel/LeftSidePanelView";
 import RightSidePanel from "./components/RightPanel/RightSidePanelView";
 import Logo from "./components/Logo";
+import Footer from "./components/Footer";
 
 function App() {
   useEffect(() => {
@@ -19,9 +20,9 @@ function App() {
   const [forecast, setForecast] = useState([]);
 
   return (
-    <Container className="mt-5">
+    <Container className="mt-2">
       <Logo />
-      <Row>
+      <Row className="mt-5 gy-3">
         <Col md={4}>
           <LeftSidePanel className="left-panel"
             city={city}
@@ -41,6 +42,7 @@ function App() {
           />
         </Col>
       </Row>
+      <Footer />
     </Container>
   );
 }
