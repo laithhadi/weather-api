@@ -20,7 +20,7 @@ function ForecastCard(props) {
                     <Card.Body>
                         <Card.Text>
                             <img
-                                src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`}
+                                src={`https://openweathermap.org/img/w/${item.weather[0].icon}.png`}
                                 alt={item.weather[0].description}
                             />
                         </Card.Text>

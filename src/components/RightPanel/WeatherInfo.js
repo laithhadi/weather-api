@@ -21,7 +21,7 @@ function WeatherInfo(props) {
             <Row>
                 <Col className="d-flex align-items-center">Feels like: {props.forecast[0].main.feels_like}°C</Col>
                 <Col><img className="weather-icon"
-                    src={`http://openweathermap.org/img/w/${props.forecast[0].weather[0].icon}.png`}
+                    src={`https://openweathermap.org/img/w/${props.forecast[0].weather[0].icon}.png`}
                     alt={props.forecast[0].weather[0].description}
                 /></Col>
             </Row>
